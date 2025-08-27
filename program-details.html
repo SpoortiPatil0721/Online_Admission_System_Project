@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Program Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #ea6a2e;
+      padding: 15px;
+      color: white;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header small {
+      font-size: 14px;
+    }
+    .container {
+      padding: 30px;
+      background-color: white;
+      max-width: 1000px;
+      margin: 30px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .step.active {
+      color: #ea6a2e;
+      font-weight: bold;
+    }
+
+    .step.completed .circle {
+      background-color: green;
+      border-color: green;
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #ccc;
+    }
+
+    .step.active .circle {
+      background-color: #ea6a2e;
+      border-color: #ea6a2e;
+    }
+    .form-section h2 {
+      color: #c33;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .required {
+      color: red;
+    }
+    input, select {
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .note {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    .note a {
+      color: #ea6a2e;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      background-color: #ea6a2e;
+    }
+
+    .btn:hover {
+      background-color: #c2541c;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KLE Society's<br><small>College of Computer Application, Dharwad</small></h1>
+</header>
+
+<div class="container">
+
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="step completed"><div class="circle"></div> Important Instructions</div>
+    <div class="step completed"><div class="circle"></div> Category Details</div>
+    <div class="step active"><div class="circle"></div> Program Details</div>
+    <div class="step"><div class="circle"></div> Personal Details</div>
+    <div class="step"><div class="circle"></div> Guardian and Address Details</div>
+    <div class="step"><div class="circle"></div> Declaration</div>
+    <div class="step"><div class="circle"></div> Payments</div>
+  </div>
+
+  <!-- Links -->
+  <div class="note">
+    <a href="dashboard.php">Back to Dashboard</a>
+    <a href="form.html">Check your eligibility</a>
+  </div>
+
+  <!-- Form -->
+  <form action="program-details.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="application_no" value="<?php echo htmlspecialchars($_GET['application_no'] ?? ''); ?>">
+
+
+    <div class="form-section">
+      <h2>Program Details</h2>
+
+      <div class="form-row">
+        <div>
+          <label><span style="color:red">*</span> Program Level</label><br/>
+          <select name="program_level" required>
+            <option value="">Select</option>
+            <option value="UG">Undergraduate - UG</option>
+            <option value="PG" selected>Postgraduate - PG</option>
+          </select>
+        </div>
+
+        <div>
+          <label><span style="color:red">*</span> Stream</label><br/>
+          <select name="stream" required>
+            <option value="">Select</option>
+            <option value="computer">Computer Applications</option>
+          </select>
+        </div>
+
+        <div>
+          <label><span style="color:red">*</span> Program</label><br/>
+          <select name="program" required>
+            <option value="">Select</option>
+            <option value="BCA" selected>BCA</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label><span style="color:red">*</span> How did you know about KLE?</label><br/>
+          <select name="know_about_kle" required>
+            <option value="">Select</option>
+            <option value="website" selected>KLE Website</option>
+            <option value="ad">Newspaper Ad</option>
+            <option value="social">Social Media</option>
+            <option value="friend">Friend or Relative</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Academic Details -->
+      <h2>10th Qualification Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label><span class="required">*</span> Board</label>
+          <input type="text" name="tenth_board" placeholder="Enter Board Name" required />
+        </div>
+
+        <div class="form-group">
+          <label><span class="required">*</span> School Name</label>
+          <input type="text" name="tenth_school" placeholder="Enter School Name" required />
+        </div>
+
+        <div class="form-group">
+          <label><span class="required">*</span> Year of Passing</label>
+          <select name="tenth_year" required>
+            <option value="">Select</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label><span class="required">*</span> 10th Markcard Upload (PDF/JPG)</label>
+          <input type="file" name="tenth_marksheet" accept=".pdf,.jpg,.jpeg,.png" required />
+        </div>
+      </div>
+
+      <h2>PU/12th Qualification Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label><span class="required">*</span> Board</label>
+          <input type="text" name="twelfth_board" placeholder="Enter Board Name" required />
+        </div>
+
+        <div class="form-group">
+          <label><span class="required">*</span> College Name</label>
+          <input type="text" name="twelfth_college" placeholder="Enter College Name" required />
+        </div>
+
+        <div class="form-group">
+          <label><span class="required">*</span> Year of Passing</label>
+          <select name="twelfth_year" required>
+            <option value="">Select</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label><span class="required">*</span> Have you received your 12th marks card?</label>
+          <select id="marksReceived" name="twelfth_received" onchange="toggleUploadRequirement()" required>
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row" id="uploadRow">
+        <div class="form-group">
+          <label id="uploadLabel">12th Markcard Upload (PDF/JPG)</label>
+          <input type="file" id="marksUpload" name="twelfth_marksheet" accept=".pdf,.jpg,.jpeg,.png" />
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button type="button" class="btn" onclick="window.history.back()">Previous</button>
+        <button type="submit" class="btn">Next</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function toggleUploadRequirement() {
+    const select = document.getElementById("marksReceived");
+    const uploadInput = document.getElementById("marksUpload");
+    const uploadLabel = document.getElementById("uploadLabel");
+
+    if (select.value === "yes") {
+      uploadInput.required = true;
+      uploadLabel.innerHTML = '<span class="required">*</span> 12th Markcard Upload (PDF/JPG)';
+    } else {
+      uploadInput.required = false;
+      uploadLabel.textContent = '12th Markcard Upload (PDF/JPG)';
+    }
+  }
+</script>
+
+</body>
+</html>

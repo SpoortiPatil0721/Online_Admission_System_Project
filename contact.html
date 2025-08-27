@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="text">
+            <h1>KLE SOCIETY'S</h1>
+            <h2>COLLEGE OF BBA AND BCA DHARWAD</h2>
+        </div>
+    </header>
+    <nav>
+        <input type="checkbox" id="check">
+    <!-- Menu icon -->
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+       <ul>
+        <li><a  href="home.html">Home</a></li>
+        <li><a href="about.html">AboutUs</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a class= "active" href="contact.html">ContactUs</a></li>
+        <li><a href="signin.html">SignIn</a></li>
+        <li><a href="signup.html">SignUp</a></li>
+       </ul> 
+    </nav>
+    <section class="contact-section">
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p><strong>Address:</strong> KLE Society’s College of BBA & BCA, Dharwad, Karnataka</p>
+          <p><strong>Phone:</strong> +91-9591909429</p>
+          <p><strong>Email:</strong> info@klebcadwd.com</p>
+          <p><strong>Website:</strong> <a href="https://klebcadwd.com" target="_blank">klebcadwd.com</a></p>
+        </div>
+    
+        <div class="contact-form">
+          <h2>Send Us Your Enquiry</h2>
+          <form action="contact_process.php" method="post">
+            <input type="text" name="name" placeholder="Your Full Name" required />
+            <input type="email" name="email" placeholder="Your Email Address" required />
+            <input type="tel" name="phone" placeholder="Your Phone Number" required />
+            <textarea name="message" rows="5" placeholder="Your Message or Query" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    
+</body>
+</html>

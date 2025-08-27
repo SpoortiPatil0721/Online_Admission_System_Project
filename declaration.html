@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Declaration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+
+    header {
+      background-color: #ea6a2e;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: white;
+      max-width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .step.completed .circle {
+      background-color: green;
+      border-color: green;
+    }
+
+    .step.active {
+      color: #ea6a2e;
+      font-weight: bold;
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #ccc;
+    }
+
+    .step.active .circle {
+      background-color: #ea6a2e;
+      border-color: #ea6a2e;
+    }
+
+    h2 {
+      color: #c33;
+      margin-bottom: 10px;
+    }
+
+    .form-section {
+      margin-top: 20px;
+    }
+
+    .declaration-text {
+      font-size: 1em;
+      line-height: 1.6;
+      background-color: #fffbe6;
+      padding: 15px;
+      border-left: 5px solid #ea6a2e;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: white;
+      background-color: #ea6a2e;
+    }
+
+    .btn:hover {
+      background-color: #c2541c;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KLE Society's<br><small>College of Computer Application, Dharwad</small></h1>
+</header>
+
+<div class="container">
+
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="step completed"><div class="circle"></div> Important Instructions</div>
+    <div class="step completed"><div class="circle"></div> Category Details</div>
+    <div class="step completed"><div class="circle"></div> Program Details</div>
+    <div class="step completed"><div class="circle"></div> Personal Details</div>
+    <div class="step completed"><div class="circle"></div> Guardian and Address Details</div>
+    <div class="step active"><div class="circle"></div> Declaration</div>
+    <div class="step"><div class="circle"></div> Payments</div>
+  </div>
+
+  <!-- Declaration Form -->
+  <div class="form-section">
+    <h2>📝 Declaration</h2>
+
+    <div class="declaration-text">
+      I hereby declare that the information provided by me in the application form is true and correct to the best of my knowledge and belief. I understand that if any information is found to be incorrect or misleading, my application or admission may be cancelled without any refund. I agree to abide by the rules and regulations of KLE Society's College of Computer Application, Dharwad.
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="agreeCheckbox" required />
+      <label for="agreeCheckbox">I agree to the above declaration</label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button class="btn" onclick="window.history.back()">Previous</button>
+      <button class="btn" onclick="submitDeclaration()">Next</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function submitDeclaration() {
+    const checkbox = document.getElementById('agreeCheckbox');
+    if (!checkbox.checked) {
+      alert('Please agree to the declaration before proceeding.');
+      return;
+    }
+
+    window.location.href = 'payments.html';
+  }
+</script>
+
+</body>
+</html>

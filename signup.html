@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Signup page</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    .error { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="logo" class="logo">
+    <div class="text">
+      <h1>KLE SOCIETY'S</h1>
+      <h2>COLLEGE OF BBA AND BCA DHARWAD</h2>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form id="registrationForm" action="register.php" method="post" onsubmit="return validateForm()">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" name="fullname" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" placeholder="Enter your email" name="email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="tel" placeholder="Enter your number" name="phone" pattern="[0-9]{10}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" placeholder="Enter your password" name="password" 
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+              title="Password must be at least 8 characters, include uppercase, lowercase, number, and special character." 
+              required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            <span class="error" id="confirmError"></span>
+          </div>
+        </div>
+
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1" value="Male" required>
+          <input type="radio" name="gender" id="dot-2" value="Female">
+          <input type="radio" name="gender" id="dot-3" value="Prefer not to say">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1"><span class="dot one"></span><span class="gender">Male</span></label>
+            <label for="dot-2"><span class="dot two"></span><span class="gender">Female</span></label>
+            <label for="dot-3"><span class="dot three"></span><span class="gender">Prefer not to say</span></label>
+          </div>
+        </div>
+        
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+        <div class="form-link">
+          <p>Already have an account? <a href="signin.html">Sign In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="corner">
+      OUR WEBSITE: <a href="https://klebcadwd.com/" target="_blank">klebcadwd</a>
+    </div>
+    <div class="cont">
+      CONTACT US: +91-9591909429
+    </div>
+  </footer>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+  
+      // Get form values
+      const fullName = document.forms["registrationForm"]["fullname"].value.trim();
+      const username = document.forms["registrationForm"]["username"].value.trim();
+      const email = document.forms["registrationForm"]["email"].value.trim();
+      const phone = document.forms["registrationForm"]["phone"].value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const genderRadios = document.getElementsByName("gender");
+  
+      const confirmError = document.getElementById("confirmError");
+      confirmError.textContent = "";
+  
+      // Validate Full Name
+      const nameRegex = /^[A-Za-z ]{3,}$/;
+      if (!nameRegex.test(fullName)) {
+        alert("Full Name should be at least 3 characters long and contain only letters and spaces.");
+        return false;
+      }
+  
+      // Validate Username
+      const usernameRegex = /^[A-Za-z0-9]{4,}$/;
+      if (!usernameRegex.test(username)) {
+        alert("Username should be at least 4 characters long and contain only letters and numbers (no spaces).");
+        return false;
+      }
+  
+      // Validate Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+  // Block common fake/test emails
+const blockedEmails = ["abc@gmail.com", "123@gmail.com", "test@gmail.com", "test123@gmail.com"];
+if (blockedEmails.includes(email.toLowerCase())) {
+  alert("Please enter a valid personal email address.");
+  return false;
+}
+
+      // Validate Phone
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phone)) {
+        alert("Phone number must be exactly 10 digits.");
+        return false;
+      }
+  
+      // Validate Password Match
+      if (password !== confirmPassword) {
+        confirmError.textContent = "Passwords do not match.";
+        return false;
+      }
+  
+      // Validate Gender Selection
+      let genderSelected = false;
+      for (const radio of genderRadios) {
+        if (radio.checked) {
+          genderSelected = true;
+          break;
+        }
+      }
+      if (!genderSelected) {
+        alert("Please select a gender.");
+        return false;
+      }
+  
+      return true;
+    }
+  </script>
+  
+</body>
+</html>

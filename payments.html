@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+
+    header {
+      background-color: #ea6a2e;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: white;
+      max-width: 800px;
+      margin: 20px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .step.completed .circle {
+      background-color: green;
+      border-color: green;
+    }
+
+    .step.active {
+      color: #ea6a2e;
+      font-weight: bold;
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #ccc;
+    }
+
+    .step.active .circle {
+      background-color: #ea6a2e;
+      border-color: #ea6a2e;
+    }
+
+    h2 {
+      color: #c33;
+    }
+
+    .form-section {
+      margin-top: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select, input {
+      padding: 8px;
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .payment-box {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .qr {
+      text-align: center;
+    }
+
+    .qr img {
+      width: 200px;
+      height: auto;
+      margin-top: 15px;
+    }
+
+    .upi-id {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: white;
+      background-color: #ea6a2e;
+    }
+
+    .btn:hover {
+      background-color: #c2541c;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KLE Society's<br><small>College of Computer Application, Dharwad</small></h1>
+</header>
+
+<div class="container">
+  <form id="paymentForm" method="POST" action="payment.php">
+    <input type="hidden" name="payment_mode" id="hiddenPaymentMode" />
+  </form>
+  
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="step completed"><div class="circle"></div> Important Instructions</div>
+    <div class="step completed"><div class="circle"></div> Category Details</div>
+    <div class="step completed"><div class="circle"></div> Program Details</div>
+    <div class="step completed"><div class="circle"></div> Personal Details</div>
+    <div class="step completed"><div class="circle"></div> Guardian and Address Details</div>
+    <div class="step completed"><div class="circle"></div> Declaration</div>
+    <div class="step active"><div class="circle"></div> Payments</div>
+  </div>
+
+  <!-- Form Section -->
+  <div class="form-section">
+    <h2>Payment Options</h2>
+
+    <label for="paymentMode">Select Payment Mode *</label>
+    <select id="paymentMode" onchange="showPaymentSection()" required>
+      <option value="">-- Select --</option>
+      <option value="upi">UPI</option>
+      <option value="card">Credit/Debit Card</option>
+    </select>
+
+    <div class="payment-box hidden" id="upiSection">
+      <h3>Pay via UPI</h3>
+      <div class="qr">
+        <img src="payment.jpg" alt="QR Code for UPI Payment" />
+        <div class="upi-id">UPI ID: klepayments@upi</div>
+      </div>
+    </div>
+
+    <div class="payment-box hidden" id="cardSection">
+      <h3>Pay via Credit/Debit Card</h3>
+      <label>Card Number</label>
+      <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" />
+      <label>Name on Card</label>
+      <input type="text" placeholder="Full Name" />
+      <label>Expiry Date</label>
+      <input type="text" placeholder="MM/YY" />
+      <label>CVV</label>
+      <input type="password" placeholder="CVV" />
+    </div>
+
+    <div class="payment-box hidden" id="netbankingSection">
+      <h3>Pay via Net Banking</h3>
+      <label>Select Bank</label>
+      <select>
+        <option value="">-- Choose Bank --</option>
+        <option>SBI</option>
+        <option>Canara Bank</option>
+        <option>HDFC</option>
+        <option>Axis</option>
+        <option>Others</option>
+      </select>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button class="btn" onclick="window.history.back()">Previous</button>
+      <button class="btn" onclick="confirmPayment()">I Have Paid</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPaymentSection() {
+    const mode = document.getElementById('paymentMode').value;
+    document.getElementById('upiSection').classList.add('hidden');
+    document.getElementById('cardSection').classList.add('hidden');
+    document.getElementById('netbankingSection').classList.add('hidden');
+
+    if (mode === 'upi') {
+      document.getElementById('upiSection').classList.remove('hidden');
+    } else if (mode === 'card') {
+      document.getElementById('cardSection').classList.remove('hidden');
+    } else if (mode === 'netbanking') {
+      document.getElementById('netbankingSection').classList.remove('hidden');
+    }
+  }
+
+  function confirmPayment() {
+    const mode = document.getElementById('paymentMode').value;
+    if (!mode) {
+      alert('Please select a payment mode and complete your payment.');
+      return;
+    }
+   // alert('✅ Payment Confirmation Received!\nThank you for your payment.');
+   // window.location.href = "thankyou.html";
+   document.getElementById('hiddenPaymentMode').value = mode;
+  document.getElementById('paymentForm').submit();
+  }
+</script>
+
+</body>
+</html>

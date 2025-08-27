@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>application-form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #ea6a2e;
+      padding: 2px;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+      background-color: white;
+      max-width:100%;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #c33;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 3px;
+      border-bottom: 1px solid  #ccc;
+      padding-bottom: 10px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-weight: 500;
+    }
+    .step.active {
+      color: #ea6a2e;
+      font-weight: bold;
+    }
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #ccc;
+    }
+    .step.active .circle {
+      background-color: #ea6a2e;
+      border-color: #ea6a2e;
+    }
+
+    h2 {
+      color: #c33;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+   
+    .note {
+      font-style: italic;
+      margin-top: 10px;
+      color: #555;
+    }
+    .next-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #ea6a2e;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .next-button:hover {
+      background-color: #d05820;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KLE Society's<br><small>College of Computer Application, Dharwad</small></h1>
+</header>
+
+<div class="container">
+  <div class="nav">
+    <div class="step active"><div class="circle"></div> Important Instructions</div>
+    <div class="step"><div class="circle"></div> Category Details</div>
+    <div class="step"><div class="circle"></div> Program Details</div>
+    <div class="step"><div class="circle"></div> Personal Details</div>
+    <div class="step"><div class="circle"></div> Guardian and Address Details</div>
+    <div class="step"><div class="circle"></div> Declaration</div>
+    <div class="step"><div class="circle"></div> Payments</div>
+  </div>
+
+  <h2>General Instructions for BCA Admissions:</h2>
+  <a href="dashboard.php" style="display: inline-block; margin-bottom: 20px; font-weight: bold; color: #ea6a2e; text-decoration: none;">
+    &larr; Back to Dashboard
+  </a>
+  <div class="section-title">1. Eligibility Criteria</div>
+  <ol type="i">
+  
+    <li>Candidates must have completed 10+2 / PUC / equivalent from a recognized board.</li>
+    <li>The applicant should have studied Mathematics / Computer Science / Information Practice as one of the subjects (preferred but not mandatory for some colleges).</li>
+    <li>A minimum aggregate of 45% marks (40% for SC/ST/Cat-I, if applicable) in qualifying exams is required.</li>
+
+  </ol>
+  <div class="section-title">2. Application Process</div>
+  <ol type="i">
+  
+    <li>Applications must be submitted online through the college admission portal.</li>
+    <li>All fields marked with * are mandatory. Incomplete applications will be rejected.</li>
+    <li>Valid contact details (email and mobile number) must be provided for future communication.</li>
+
+  </ol>
+  <div class="section-title">3. Documents Required (at the time of admission)</div>
+  <ol type="i">
+  
+    <li>SSLC/10th Marks Card (original + 2 copies).</li>
+    <li>PUC/12th Marks Card (original + 2 copies)</li>
+    <li>Transfer Certificate (TC)</li>
+    <li>Conduct Certificate</li>
+    <li>Caste Certificate (if applicable)</li>
+    <li>Passport-size photographs (4–6 copies)</li>
+    <li>Aadhaar card copy</li>
+    <li>Migration Certificate (for out-of-state candidates)</li>
+    <li>Income Certificate (if applying under fee concession schemes)</li>
+  </ol>
+  <div class="section-title">4. Fee Structure</div>
+  <ol type="i">
+  
+    <li>Admission will be confirmed only after the payment of prescribed fees.</li>
+    <li>Detailed fee structure is available on the college website or admission portal.</li>
+    <li>Fees once paid are non-refundable, except under special cases as per college refund policy.</li>
+
+  </ol>
+  <p class="note">Note: As per the above instructions students must qualify and provide every document mentioned.</p>
+
+
+  <button class="next-button" onclick="goToCategoryDetails()">Next</button>
+</div>
+<script>
+    function goToCategoryDetails() {
+      window.location.href = "category-details.php";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="text">
+            <h1>KLE SOCIETY'S</h1>
+            <h2>COLLEGE OF BBA AND BCA DHARWAD</h2>
+        </div>
+    </header>
+    <nav>
+        <input type="checkbox" id="check">
+    <!-- Menu icon -->
+    <label for="check" class="checkbtn">
+        <i class="fa-solid fa-bars"></i>
+    </label>
+       <ul>
+        <li><a class= "active" href="#">Home</a></li>
+        <li><a href="about.html">AboutUs</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="contact.html">ContactUs</a></li>
+        <li class="dropdown">
+          <a href="#">SignIn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-content">
+            <li><a href="signin.html">Student</a></li>
+            <li><a href="signin-admin.php">Admin</a></li>
+          </ul>
+        </li>        
+        <li><a href="signup.html">SignUp</a></li>
+       </ul> 
+    </nav>
+    <section class="slider-container">
+        <div class="slider">
+          <img src="images2.jpg" alt="College Image 1" class="slide active">
+          <img src="images3.jpg" alt="College Image 2" class="slide">
+          <img src="images4.jpg" alt="College Image 3" class="slide">
+          <img src="Gal-03.jpg" alt="College Image 4" class="slide">
+        </div>
+        <button class="arrow prev" id="prev">&#10094;</button>
+        <button class="arrow next" id="next">&#10095;</button>      
+      </section>
+
+      
+      
+      <section class="vmo-section">
+        <div class="vmo-box">
+          <img src="Vision-Img.png" alt="Vision">
+          <h3>VISION</h3>
+          <p>To contribute to welfare of society by empowering students with latest skills, tools and technologies in the field of Computer Applications…</p>
+        </div>
+        <div class="vmo-box">
+          <img src="Mission-Img.png" alt="Mission">
+          <h3>MISSION</h3>
+          <p>To build across the institute a culture of excellence in teaching and learning with needed performance and accountability…</p>
+        </div>
+        <div class="vmo-box">
+          <img src="Objectives-img.png" alt="Objective">
+          <h3>OBJECTIVE</h3>
+          <p>Demonstrating the candidate. The decision of admission is based on sound knowledge in key areas of computer science and industrial computing…</p>
+        </div>
+      </section>
+      
+<div class="extended-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About College</h4>
+        <p>
+          The KLE Society’s Bachelor of Computer Application (BCA) began in 2013 with a few admissions. It was initiated under the charge of Prof. G.S. Sheeri, the Incharge Principal of BBA and BCA.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>📞 0836-2743364</p>
+        <p>📱 +91 8748896869</p>
+        <p>📱 +91 9591909429</p>
+        <p>✉️ klebcadwd@gmail.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+              <li><a href="about.html">AboutUs</a></li>
+              <li><a href="signup.html">Admission</a></li>
+              <li><a href="faculty.html">Faculty</a></li>
+              <li><a href="contact.html">Addmission Enquire/Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+      
+      
+      
+    <div class="icon-sidebar">
+        <a href="https://www.instagram.com/dwdklebca/?hl=en"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="https://www.facebook.com/dwdklebca/"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/dwdklebca/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/channel/UCBQ4hWM5hpUgq5n1YqaCq3Q"><i class="fa-brands fa-square-youtube"></i></a>
+    </div>
+    <footer>
+        
+        
+        <div class="mai">
+            <marquee class="marq" behavior="scroll" direction="left" scrollamount="5">
+              Admissions Open For BCA 2025-26. Hurry Up! Apply Now.
+            </marquee>
+          </div>
+          <div class="corner">
+              OUR WEBSITE: <a href="https://klebcadwd.com/" target="_blank">klebcadwd</a>
+          </div>
+          <div class="cont">
+              CONTACT US: +91-9591909429
+          </div>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const nextBtn = document.getElementById('next');
+        const prevBtn = document.getElementById('prev');
+      
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+              slide.classList.add('active');
+            }
+          });
+        }
+
+        function nextSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  function prevSlide() {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  // Auto-slide every 5 seconds
+  setInterval(nextSlide, 5000);
+        showSlide(slideIndex);
+      </script>
+      
+</body>
+</html>
